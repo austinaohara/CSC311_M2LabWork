@@ -24,6 +24,15 @@ public class AppController {
 
     @FXML
     protected void onCalculateButtonClick() {
-        labelMain.setText("Welcome to JavaFX Application!");
+        String num1 = textFieldLeft.getText();
+        String num2 = textFieldRight.getText();
+
+        labelMain.setText(num1 + " + " + num2 + " = " +
+                (Double.parseDouble(num1) + Double.parseDouble(num2)));
+    }
+
+    @FXML
+    protected void onTextChange() {
+
     }
 }
