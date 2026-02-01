@@ -1,11 +1,15 @@
 package org.example.csc311_assignment01_gettingstarted;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 public class AppController {
-    @FXML
-    private Label welcomeText;
+    @FXML private Label labelMain;
+    @FXML private TextField textFieldLeft;
+    @FXML private TextField textFieldRight;
+    @FXML private Button buttonAdd;
 
     // ToDo 01: add two text fields to the GUI so that the user can find the sum
 
@@ -20,6 +24,6 @@ public class AppController {
 
     @FXML
     protected void onCalculateButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        labelMain.setText("Welcome to JavaFX Application!");
     }
 }
