@@ -21,18 +21,40 @@ public class AppController {
 
     // ToDo 05: commit changes and push back to the same repo
 
-
     @FXML
-    protected void onCalculateButtonClick() {
-        String num1 = textFieldLeft.getText();
-        String num2 = textFieldRight.getText();
+    protected void initialize() {
+        applyIntegerOnly(textFieldLeft);
+        applyIntegerOnly(textFieldRight);
+    }
 
-        labelMain.setText(num1 + " + " + num2 + " = " +
-                (Double.parseDouble(num1) + Double.parseDouble(num2)));
+    private void applyIntegerOnly(TextField textField) {
+        textField.textProperty().addListener((obs, oldVal, newVal) -> {
+            // allow empty (so backspace works)
+            if (newVal.isEmpty()) return;
+
+            // digits only (integers)
+            if (!newVal.matches("-?\\d*(\\.\\d*)?")) {
+                textField.setText(oldVal);
+            }
+        });
     }
 
     @FXML
-    protected void onTextChange() {
+    protected void onCalculateButtonClick() {
+        double a = Double.parseDouble(textFieldLeft.getText());
+        double b = Double.parseDouble(textFieldRight.getText());
+        double sum  = a + b;
 
+        labelMain.setText(String.format("%s + %s = %s",
+                formatDouble(a),
+                formatDouble(b),
+                formatDouble(sum)));
+    }
+
+    // Format a double to max of 6 decimals, trimming zeros
+    private String formatDouble(double num) {
+        String s = String.format("%.6f", num);
+        s = s.replaceAll("0+$", "").replaceAll("\\.$", "");
+        return s;
     }
 }

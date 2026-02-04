@@ -1,5 +1,8 @@
 .root{
-    -fx-background-color: #00ff00;
+    -fx-background-color: lightblue;
     -fx-padding: 10;
     -fx-spacing: 10;
+}
+.button {
+    -fx-background-color: red;
 }
